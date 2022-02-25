@@ -9,33 +9,6 @@ const typeDefs = require('./schema.js')
 
 let port = process.env.PORT || 9001;
 
-// //const allowedOrigins = ['http://localhost:10001','https://d3h0owdjgzys62.cloudfront.net']
-// // let options =  {
-// //   origin: allowedOrigins
-// // }
-
-// const app = express();
-// //app.use(cors(options))
-
-// const accessSecret = process.env.JWT_AUTH;
-// const refreshSecret = process.env.JWT_REFRESH;
-
-// app.get('/login', async (req, res) => {
-//   // read username and password from request body
-//       // generate an access token
-//       const accessToken = jwt.sign({ username: user.username, role: "user",  }, accessSecret, { expiresIn: '15m' });
-//       const refreshToken = jwt.sign({ username: user.username, role: "user" }, refreshSecret);
-
-//       refreshTokens.push(refreshToken);
-
-//       res.json({
-//           accessToken,
-//           refreshToken
-//       });
-
-// });
-
-
 
 var resolvers = {
   Query: {
