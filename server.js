@@ -155,12 +155,9 @@ const startServer = async()=>{
     }
   })  
   await server.start()
-  const allowedOrigins = ['http://localhost:10001','https://d3h0owdjgzys62.cloudfront.net']
-  let options =  {
-    origin: allowedOrigins
-  }
+
   const app = express();
-  app.use(cors(options))
+  app.use(cors())
   app.use(express.static('public'));
   server.applyMiddleware({ app: app, authenticateJWT });
   app.listen({ port: port },()=>{
