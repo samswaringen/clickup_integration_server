@@ -68,9 +68,12 @@ var server=null;
 const startServer = async()=>{
   server  = new ApolloServer({ typeDefs, resolvers})  
   await server.start()
- 
+ const allowedOrigins = ['http://localhost:10001','https://d3h0owdjgzys62.cloudfront.net']
+  let options =  {
+    origin: allowedOrigins
+  }
   const app = express();
-  app.use(cors())
+  app.use(cors(options))
   app.use(express.static('public'));
   server.applyMiddleware({ app: app });
   app.listen({ port: port },()=>{
