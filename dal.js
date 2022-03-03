@@ -2,7 +2,8 @@ const { MongoClient } = require('mongodb');
 let db = null
 async function connect(){
   // Get MongoDB info
-    const uri = process.env.MONGO_URL;
+    // const uri = process.env.MONGO_URL;
+    const uri = 'mongodb+srv://admin:RP9M97xBwYqJvV6@cluster0.r6jyd.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
     const client = new MongoClient(uri);
     try {
         await client.connect()

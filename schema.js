@@ -4,6 +4,7 @@ const typeDefs = gql`
   type assignee {
     value: Int
     label: String
+    apiKey: String
   }
   type requester{
     value: String
