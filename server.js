@@ -168,7 +168,7 @@ const startServer = async()=>{
 
   app.post('/login', jsonParser, async (req, res) => {
     const { apiKey } = req.body;
-    let key = process.env.APY_KEY
+    let key = process.env.API_KEY
     // generate an access token
     if(apiKey === key){
       const accessToken = jwt.sign({ role: "user" }, accessSecret, { expiresIn: '15m' });
