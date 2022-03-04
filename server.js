@@ -155,7 +155,7 @@ const startServer = async()=>{
     }
   })  
   await server.start()
-   const allowedOrigins = ['http://localhost:10001','https://d3h0owdjgzys62.cloudfront.net']
+   const allowedOrigins = ['https://d3h0owdjgzys62.cloudfront.net']
   let options =  {
     origin: allowedOrigins
   }
