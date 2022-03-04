@@ -5,9 +5,8 @@ const cors = require('cors');
 var dal = require('./dal.js')
 const typeDefs = require('./schema.js')
 const jwt = require('jsonwebtoken')
-
-
-
+var bodyParser = require("body-parser")
+var jsonParser = bodyParser.json()
 
 
 
@@ -167,18 +166,20 @@ const startServer = async()=>{
       console.log("listening on port:9001")
   })
 
-  app.get('/login', async (req, res) => {
-    console.log("here")
-    // read username and password from request body
-        // generate an access token
-        const accessToken = jwt.sign({ role: "user" }, accessSecret, { expiresIn: '15m' });
-        const refreshToken = jwt.sign({ role: "user" }, refreshSecret);
-  
-        res.json({
-            accessToken,
-            refreshToken
-        });
-  
+  app.post('/login', jsonParser, async (req, res) => {
+    const { apiKey } = req.body;
+    let key = process.env.APY_KEY
+    // generate an access token
+    if(apiKey === key){
+      const accessToken = jwt.sign({ role: "user" }, accessSecret, { expiresIn: '15m' });
+      const refreshToken = jwt.sign({ role: "user" }, refreshSecret);
+      res.json({
+          accessToken,
+          refreshToken
+      });
+    }else{
+      res.send("No permission to access!")
+    }
   });
 
 }
